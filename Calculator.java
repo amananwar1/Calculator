@@ -1,6 +1,6 @@
 //Author: Aman Anwar
-//“I  pledge  that  I  have  neither  given  nor  received  help  from  anyone  other  than  the 
-//instructor/TA for all program components included here!” 
+//I  pledge  that  I  have  neither  given  nor  received  help  from  anyone  other  than  the 
+//instructor/TA for all program components included here!
 
 import java.awt.*;
 import javax.swing.*;
