@@ -12,6 +12,9 @@ public class Calculator extends JFrame implements ActionListener{
     JTextField textField;
     JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, neg, plus, min, mult, div, power, dot,
     sin, cos, tan, cot, ln, log, eq, clear;
+    double t, t1, res;
+    boolean x = false, y = false, z = false;
+    char op;
 
     Container c;
     JPanel textPanel, buttonpanel;
@@ -22,7 +25,7 @@ public class Calculator extends JFrame implements ActionListener{
         JPanel textpanel = new JPanel();
         textField = new JTextField(50);
         textField.setHorizontalAlignment(SwingConstants.RIGHT);
-		 textField.addKeyListener(new KeyAdapter() {
+		  textField.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent keyevent) {
 				char c = keyevent.getKeyChar();
 				if (c >= '0' && c <= '9') {
@@ -100,6 +103,10 @@ public class Calculator extends JFrame implements ActionListener{
 		log = new JButton("log");
 		buttonpanel.add(log);
 		log.addActionListener(this);
+      
+      power = new JButton("^");
+		buttonpanel.add(power);
+		power.addActionListener(this);
 
 		sin = new JButton("SIN");
 		buttonpanel.add(sin);
@@ -114,22 +121,231 @@ public class Calculator extends JFrame implements ActionListener{
 		clear = new JButton("C");
 		buttonpanel.add(clear);
 		clear.addActionListener(this);
+      
 		c.add("Center", buttonpanel);
 		c.add("North", textpanel);
+      
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
 
     public void actionPerformed(ActionEvent e) {
-
+      String str = e.getActionCommand();
+      
+      if(str.equals("0")) {
+         
+         if (z == false) {
+            textField.setText(textField.getText() + "0");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "0");
+            z = false;
+         }
+         
+      } else if (str.equals("1")) {
+          
+         if (z == false) {
+            textField.setText(textField.getText() + "1");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "1");
+            z = false;
+         }
+         
+      } else if (str.equals("2")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "2");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "2");
+            z = false;
+         }
+         
+      } else if (str.equals("3")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "3");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "3");
+            z = false;
+         }
+         
+      } else if (str.equals("4")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "4");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "4");
+            z = false;
+         }
+         
+      } else if (str.equals("5")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "5");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "5");
+            z = false;
+         }
+         
+      } else if (str.equals("6")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "6");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "6");
+            z = false;
+         }
+         
+      } else if (str.equals("7")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "7");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "7");
+            z = false;
+         }
+         
+      } else if (str.equals("8")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "8");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "8");
+            z = false;
+         }
+         
+      } else if (str.equals("9")) {
+       
+         if (z == false) {
+            textField.setText(textField.getText() + "9");
+         } else {
+            textField.setText("");
+				textField.setText(textField.getText() + "9");
+            z = false;
+         }
+         
+      } else if (str.equals("+/-")) {
+         
+         if (x == false) {
+            textField.setText("-" + textField.getText());
+         } else {
+            textField.setText(textField.getText());
+         }
+         
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("")) {
+      
+      } else if (str.equals("+")) {
+      
+      if (textField.getText().equals("")) {
+				textField.setText("");
+				t = 0;
+				op = '+';
+			} else {
+				t = Double.parseDouble(textField.getText());
+				textField.setText("");
+				op = '+';
+				y = false;
+				x = false;
+			}
+      
+      } else if (str.equals("-")) {
+      
+         if (textField.getText().equals("")) {
+				textField.setText("");
+				t = 0;
+				op = '-';
+			} else {
+				t = Double.parseDouble(textField.getText());
+				textField.setText("");
+				op = '-';
+				y = false;
+				x = false;
+			}
+         
+      } else if (str.equals("*")) {
+      
+      if (textField.getText().equals("")) {
+				textField.setText("");
+				t = 0;
+				op = '*';
+			} else {
+				t = Double.parseDouble(textField.getText());
+				textField.setText("");
+				op = '*';
+				y = false;
+				x = false;
+			}
+         
+      } else if (str.equals("/")) {
+         
+         if (textField.getText().equals("")) {
+				textField.setText("");
+				t = 0;
+				op = '/';
+			} else {
+				t = Double.parseDouble(textField.getText());
+				textField.setText("");
+				op = '/';
+				y = false;
+				x = false;
+			}
+         
+      } else if (str.equals("=")) {
+      
+			if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				t1 = Double.parseDouble(textField.getText());
+				if (op == '+') {
+				   res = t + t1;
+            } else if (op == '-') {
+				   res = t - t1;
+            } else if (op == '*') {
+				   res = t * t1;
+            } else if (op == '/') {
+				   res = t / t1;
+            }
+				textField.setText("");
+				textField.setText(textField.getText() + res);
+				z = true;
+			}
+         
+		} else if (str.equals("C")) {
+         textField.setText("");
+			x = false;
+			y = false;
+			z = false;
+      } 
+      
     }
     
     public static void main(String args[]) {
+    /*
 		try {
 			UIManager
 					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e) {
-		}
+		}*/
 		Calculator calc = new Calculator();
 		calc.setTitle("Calculator");
 		calc.pack();
