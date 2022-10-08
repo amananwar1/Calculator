@@ -12,7 +12,7 @@ public class Calculator extends JFrame implements ActionListener{
     JTextField textField;
     JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, neg, plus, min, mult, div, power, dot,
     sin, cos, tan, cot, ln, log, eq, clear;
-    double t, t1, res;
+    double t, t1, tempres, res;
     boolean x = false, y = false, z = false;
     char op;
 
@@ -36,7 +36,7 @@ public class Calculator extends JFrame implements ActionListener{
 		});
 		textpanel.add(textField);
 		buttonpanel = new JPanel();
-		buttonpanel.setLayout(new GridLayout(8, 4, 3, 3));
+		buttonpanel.setLayout(new GridLayout(6, 4, 3, 3));
       
       b7 = new JButton("7");
 		buttonpanel.add(b7);
@@ -104,19 +104,26 @@ public class Calculator extends JFrame implements ActionListener{
 		buttonpanel.add(log);
 		log.addActionListener(this);
       
+      ln = new JButton("ln");
+		buttonpanel.add(ln);
+		ln.addActionListener(this);
+      
       power = new JButton("^");
 		buttonpanel.add(power);
 		power.addActionListener(this);
 
-		sin = new JButton("SIN");
+		sin = new JButton("sin");
 		buttonpanel.add(sin);
 		sin.addActionListener(this);
-		cos = new JButton("COS");
+		cos = new JButton("cos");
 		buttonpanel.add(cos);
 		cos.addActionListener(this);
-		tan = new JButton("TAN");
+		tan = new JButton("tan");
 		buttonpanel.add(tan);
 		tan.addActionListener(this);
+      cot = new JButton("cot");
+		buttonpanel.add(cot);
+		cot.addActionListener(this);
 		
 		clear = new JButton("C");
 		buttonpanel.add(clear);
@@ -236,24 +243,94 @@ public class Calculator extends JFrame implements ActionListener{
          
          if (x == false) {
             textField.setText("-" + textField.getText());
+            x = true;
          } else {
             textField.setText(textField.getText());
          }
          
-      } else if (str.equals("")) {
+      } else if (str.equals(".")) {
       
-      } else if (str.equals("")) {
+         if (y == false) {
+            textField.setText(textField.getText() + ".");
+            y = true;
+         } else {
+            textField.setText(textField.getText());
+         }
+         
+      } else if (str.equals("sin")) {
       
-      } else if (str.equals("")) {
+         if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				tempres = Math.sin(Double.parseDouble(textField.getText()));
+				textField.setText("");
+				textField.setText(textField.getText() + tempres);
+			}
+
+      } else if (str.equals("cos")) {
+               
+         if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				tempres = Math.cos(Double.parseDouble(textField.getText()));
+				textField.setText("");
+				textField.setText(textField.getText() + tempres);
+			}
+
+      } else if (str.equals("tan")) {
+            
+         if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				tempres = Math.tan(Double.parseDouble(textField.getText()));
+				textField.setText("");
+				textField.setText(textField.getText() + tempres);
+			}
+
+      } else if (str.equals("cot")) {
+            
+         if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				tempres = (Math.cos(Double.parseDouble(textField.getText()))) / (Math.sin(Double.parseDouble(textField.getText())));
+				textField.setText("");
+				textField.setText(textField.getText() + tempres);
+			}
+
+      } else if (str.equals("log")) {
       
-      } else if (str.equals("")) {
+      if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				tempres = Math.log10(Double.parseDouble(textField.getText()));
+				textField.setText("");
+				textField.setText(textField.getText() + tempres);
+			}
       
-      } else if (str.equals("")) {
+      } else if (str.equals("ln")) {
       
-      } else if (str.equals("")) {
+      if (textField.getText().equals("")) {
+				textField.setText("");
+			} else {
+				tempres = Math.log(Double.parseDouble(textField.getText()));
+				textField.setText("");
+				textField.setText(textField.getText() + tempres);
+			}
       
-      } else if (str.equals("")) {
-      
+      } else if (str.equals("^")) {
+         
+         if (textField.getText().equals("")) {
+				textField.setText("");
+				t = 0;
+				op = '^';
+			} else {
+				t = Double.parseDouble(textField.getText());
+				textField.setText("");
+				op = '^';
+				y = false;
+				x = false;
+			}
+         
       } else if (str.equals("+")) {
       
       if (textField.getText().equals("")) {
@@ -324,6 +401,8 @@ public class Calculator extends JFrame implements ActionListener{
 				   res = t * t1;
             } else if (op == '/') {
 				   res = t / t1;
+            } else if (op == '^') {
+               res = Math.pow(t, t1);
             }
 				textField.setText("");
 				textField.setText(textField.getText() + res);
@@ -340,12 +419,7 @@ public class Calculator extends JFrame implements ActionListener{
     }
     
     public static void main(String args[]) {
-    /*
-		try {
-			UIManager
-					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (Exception e) {
-		}*/
+
 		Calculator calc = new Calculator();
 		calc.setTitle("Calculator");
 		calc.pack();
