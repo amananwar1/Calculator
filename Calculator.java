@@ -10,8 +10,8 @@ import javax.swing.event.*;
 public class Calculator extends JFrame implements ActionListener{
 
     JTextField textField;
-    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, neg, plus, min, mult, div, power, dot,
-    sin, cos, tan, cot, ln, log, eq, clear;
+    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, neg, plus, min,
+    mult, div, power, dot, sin, cos, tan, cot, ln, log, eq, clear;
     double t, t1, tempres, res;
     boolean x = false, y = false, z = false;
     char op;
@@ -23,8 +23,9 @@ public class Calculator extends JFrame implements ActionListener{
         c = getContentPane();
         c.setLayout(new BorderLayout());
         JPanel textpanel = new JPanel();
-        textField = new JTextField(50);
+        textField = new JTextField(35);
         textField.setHorizontalAlignment(SwingConstants.RIGHT);
+        
 		  textField.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent keyevent) {
 				char c = keyevent.getKeyChar();
@@ -34,6 +35,7 @@ public class Calculator extends JFrame implements ActionListener{
 				}
 			}
 		});
+      
 		textpanel.add(textField);
 		buttonpanel = new JPanel();
 		buttonpanel.setLayout(new GridLayout(6, 4, 3, 3));
@@ -46,7 +48,15 @@ public class Calculator extends JFrame implements ActionListener{
 		b8.addActionListener(this);
       b9 = new JButton("9");
 		buttonpanel.add(b9);
-		b9.addActionListener(this);
+      b9.addActionListener(this);
+      
+      sin = new JButton("sin");
+		buttonpanel.add(sin);
+		sin.addActionListener(this);
+		cos = new JButton("cos");
+		buttonpanel.add(cos);
+      cos.addActionListener(this);
+      
       b4 = new JButton("4");
 		buttonpanel.add(b4);
 		b4.addActionListener(this);
@@ -56,6 +66,13 @@ public class Calculator extends JFrame implements ActionListener{
       b6 = new JButton("6");
 		buttonpanel.add(b6);
 		b6.addActionListener(this);
+      
+      tan = new JButton("tan");
+		buttonpanel.add(tan);
+		tan.addActionListener(this);
+      cot = new JButton("cot");
+		buttonpanel.add(cot);
+		cot.addActionListener(this);
       
 		b1 = new JButton("1");
 		buttonpanel.add(b1);
@@ -67,40 +84,7 @@ public class Calculator extends JFrame implements ActionListener{
 		buttonpanel.add(b3);
 		b3.addActionListener(this);
       
-      neg = new JButton("+/-");
-		buttonpanel.add(neg);
-		neg.addActionListener(this);
-		
-      b0 = new JButton("0");
-		buttonpanel.add(b0);
-		b0.addActionListener(this);
-      
-      dot = new JButton(".");
-		buttonpanel.add(dot);
-		dot.addActionListener(this);
-
-		plus = new JButton("+");
-		buttonpanel.add(plus);
-		plus.addActionListener(this);
-
-		min = new JButton("-");
-		buttonpanel.add(min);
-		min.addActionListener(this);
-
-		mult = new JButton("*");
-		buttonpanel.add(mult);
-		mult.addActionListener(this);
-
-		div = new JButton("/");
-		div.addActionListener(this);
-		buttonpanel.add(div);
-
-
-		eq = new JButton("=");
-		buttonpanel.add(eq);
-		eq.addActionListener(this);
-
-		log = new JButton("log");
+      log = new JButton("log");
 		buttonpanel.add(log);
 		log.addActionListener(this);
       
@@ -108,22 +92,41 @@ public class Calculator extends JFrame implements ActionListener{
 		buttonpanel.add(ln);
 		ln.addActionListener(this);
       
+      neg = new JButton("+/-");
+		buttonpanel.add(neg);
+		neg.addActionListener(this);
+      
+      b0 = new JButton("0");
+		buttonpanel.add(b0);
+		b0.addActionListener(this);
+      
+      dot = new JButton(".");
+		buttonpanel.add(dot);
+		dot.addActionListener(this);
+      
       power = new JButton("^");
 		buttonpanel.add(power);
 		power.addActionListener(this);
+      
+      div = new JButton("/");
+		div.addActionListener(this);
+		buttonpanel.add(div);
 
-		sin = new JButton("sin");
-		buttonpanel.add(sin);
-		sin.addActionListener(this);
-		cos = new JButton("cos");
-		buttonpanel.add(cos);
-		cos.addActionListener(this);
-		tan = new JButton("tan");
-		buttonpanel.add(tan);
-		tan.addActionListener(this);
-      cot = new JButton("cot");
-		buttonpanel.add(cot);
-		cot.addActionListener(this);
+		plus = new JButton("+");
+		buttonpanel.add(plus);
+		plus.addActionListener(this);
+      
+      eq = new JButton("=");
+		buttonpanel.add(eq);
+		eq.addActionListener(this);
+      
+      min = new JButton("-");
+		buttonpanel.add(min);
+		min.addActionListener(this);
+
+		mult = new JButton("*");
+		buttonpanel.add(mult);
+		mult.addActionListener(this);
 		
 		clear = new JButton("C");
 		buttonpanel.add(clear);
